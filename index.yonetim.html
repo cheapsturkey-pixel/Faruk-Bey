@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10231d">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Danışman Paneli | Yuva</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="role-experience.css">
+</head>
+<body class="admin-page">
+  <header class="site-header admin-header">
+    <a class="brand" href="yonetim.html" aria-label="Yuva yönetim ana sayfa"><span class="brand-mark">y</span><span>yuva<span class="brand-dot">.</span></span></a>
+    <span class="admin-header-label"><i></i> ÖZEL YÖNETİM ALANI</span>
+    <a class="admin-public-link" href="index.html">Müşteri sitesine git ↗</a>
+  </header>
+
+  <main class="admin-main">
+    <section id="auth-screen" class="auth-screen">
+      <div class="auth-card">
+        <div class="auth-lock">y</div>
+        <span class="section-kicker">YUVA · DANIŞMAN PANELİ</span>
+        <h1 id="auth-title">Danışman girişi</h1>
+        <p id="auth-description">Portföyünüzü ve müşteri kayıtlarınızı yönetin.</p>
+        <form id="auth-form">
+          <div id="auth-account-fields" class="hidden">
+            <label for="admin-name">Adınız</label>
+            <input id="admin-name" name="accountName" type="text" autocomplete="name" maxlength="100" placeholder="Ad soyad">
+            <label for="admin-email">E-posta</label>
+            <input id="admin-email" name="email" type="email" autocomplete="email" maxlength="254" placeholder="ornek@eposta.com">
+          </div>
+          <div id="auth-login-email-field" class="hidden">
+            <label for="admin-login-email">E-posta</label>
+            <input id="admin-login-email" name="loginEmail" type="email" autocomplete="username" maxlength="254" placeholder="Kayıtlı e-posta adresiniz">
+          </div>
+          <label id="password-label" for="admin-password">Yönetim parolası</label>
+          <input id="admin-password" name="password" type="password" autocomplete="current-password" minlength="8" required placeholder="En az 8 karakter">
+          <label id="password-confirm-label" class="hidden" for="admin-password-confirm">Parolayı tekrar girin</label>
+          <input id="admin-password-confirm" class="hidden" name="confirmPassword" type="password" autocomplete="new-password" minlength="8" placeholder="Parolayı tekrar girin">
+          <p id="auth-error" class="auth-error" role="alert"></p>
+          <button class="primary-button full-button" type="submit" id="auth-submit">Yönetim paneline gir</button>
+        </form>
+        <p id="auth-mode-note" class="auth-mode-note">Tek danışman hesabı · Bu tarayıcıda kayıtlı</p>
+        <div class="auth-links">
+          <button id="auth-switch" type="button" class="auth-text-button">Hesabınız yok mu? Kayıt oluştur</button>
+          <button id="auth-reset" type="button" class="auth-text-button hidden">Hesap / parola erişimini sıfırla</button>
+        </div>
+        <a class="auth-back-link" href="index.html">← Müşteri sitesine dön</a>
+      </div>
+      <p class="prototype-security">Bu deneme hesabı yalnızca bu tarayıcıda çalışır; güvenli sunucu girişi veya cihazlar arası eşitleme değildir.</p>
+    </section>
+
+    <section id="admin-app" class="admin-app hidden">
+      <div class="dashboard-wrap admin-dashboard">
+        <div class="admin-dashboard-top">
+          <div><span class="section-kicker">DANIŞMAN ÇALIŞMA ALANI</span><h1>İşlerinizi, <em>tek yerden yönetin.</em></h1><p>Portföyü güncelleyin, müşteri taleplerini takip edin ve işlem ön hazırlığınızı yapın.</p></div>
+          <div class="admin-top-actions"><a class="secondary-button" href="index.html">Müşteri sitesini görüntüle ↗</a><button id="logout-button" class="logout-button">Oturumu kapat</button></div>
+        </div>
+        <nav class="admin-tabs" aria-label="Yönetim bölümleri">
+          <button class="admin-tab active" data-admin-view="portfolio">⌂ <span>Portföy</span></button>
+          <button class="admin-tab" data-admin-view="leads">◉ <span>Müşteri talepleri</span></button>
+          <button class="admin-tab" data-admin-view="appointments">▣ <span>Randevular</span></button>
+          <button class="admin-tab" data-admin-view="documents">✳ <span>İşlem belgeleri</span></button>
+          <button class="admin-tab" data-admin-view="advisor">◎ <span>Danışman profili</span></button>
+          <button class="admin-tab" data-admin-view="backup">↧ <span>Yedekleme</span></button>
+        </nav>
+
+        <section id="portfolio-panel" class="admin-panel active">
+          <div class="metric-grid">
+            <article class="metric-card"><span class="metric-icon green">⌂</span><span class="metric-label">Toplam portföy</span><strong id="metric-total">0</strong><small>Tüm mülkleriniz</small></article>
+            <article class="metric-card"><span class="metric-icon peach">◉</span><span class="metric-label">Yayındaki ilanlar</span><strong id="metric-live">0</strong><small>Müşteriler keşfedebilir</small></article>
+            <article class="metric-card"><span class="metric-icon lavender">✳</span><span class="metric-label">Açık müşteri talepleri</span><strong id="metric-leads">0</strong><small>Takip bekleyen başvurular</small></article>
+            <article class="metric-card"><span class="metric-icon peach">▣</span><span class="metric-label">Yaklaşan randevular</span><strong id="metric-appointments">0</strong><small>Planlanan müşteri görüşmeleri</small></article>
+            <article class="metric-card"><span class="metric-icon lavender">↻</span><span class="metric-label">Bugün / geciken takip</span><strong id="metric-follow-ups">0</strong><small>Geri dönüş bekleyen müşteriler</small></article>
+          </div>
+          <section class="dashboard-section">
+            <div class="section-heading compact"><div><span class="section-kicker">PORTFÖYÜM</span><h2>İlanlarınız</h2></div><div class="admin-listing-controls"><label class="filter-select"><span class="sr-only">İlan durumuna göre filtrele</span><select id="admin-filter"><option value="all">Tüm durumlar</option><option value="active">Yayında</option><option value="draft">Taslak</option></select></label><button id="add-listing-button" class="primary-button"><span>＋</span> Yeni ilan</button></div></div>
+            <div id="admin-listings" class="admin-list"></div>
+          </section>
+          <p class="admin-private-note">İlanların yayına alınmadan önce fiyat, yetki ve taşınmaz bilgilerini kontrol edin.</p>
+        </section>
+
+        <section id="leads-panel" class="admin-panel">
+          <div class="section-heading compact"><div><span class="section-kicker">MÜŞTERİ TAKİBİ</span><h2>İletişim talepleri</h2></div><span class="private-note">Durumunu güncelleyin, geri dönüş planlayın</span></div>
+          <div class="lead-list-controls">
+            <label class="lead-search-label">Müşteri ara<input id="lead-search" type="search" placeholder="Ad, telefon veya ilan"></label>
+            <label class="lead-follow-up-filter">Takip planı<select id="lead-follow-up-filter"><option value="all">Tüm müşteriler</option><option value="due">Bugün / geciken</option><option value="scheduled">Planlanan takipler</option><option value="unscheduled">Takip tarihi yok</option></select></label>
+          </div>
+          <div id="lead-list" class="lead-list"></div>
+          <section class="activity-section">
+            <div class="section-heading compact"><div><span class="section-kicker">İŞLEM GEÇMİŞİ</span><h2>Son aktiviteler</h2></div></div>
+            <div id="activity-list" class="activity-list"></div>
+          </section>
+        </section>
+
+        <section id="appointments-panel" class="admin-panel">
+          <div class="section-heading compact"><div><span class="section-kicker">GÖRÜŞME TAKİBİ</span><h2>Randevu ajandası</h2></div></div>
+          <div class="appointment-layout">
+            <form id="appointment-form" class="form-card appointment-form">
+              <div class="form-card-heading"><span class="form-step">01</span><div><h2>Yeni randevu</h2><p>Müşteri görüşmesini ve mülk gezisini planlayın.</p></div></div>
+              <label>Müşteri<select id="appointment-lead" name="leadId"></select></label>
+              <label>İlgili ilan<select id="appointment-property" name="propertyId"></select></label>
+              <div class="field-row"><label>Tarih<input name="date" type="date" required></label><label>Saat<input name="time" type="time" required></label></div>
+              <label>Buluşma yeri / görüşme bağlantısı<input name="location" maxlength="255" placeholder="Ofis, ilan adresi veya çevrim içi"></label>
+              <label>Görüşme notu<textarea name="notes" maxlength="1000" rows="3" placeholder="Görüşme gündemi veya hazırlık notları"></textarea></label>
+              <button class="primary-button full-button" type="submit">Randevuyu ajandaya ekle</button>
+            </form>
+            <div class="appointment-agenda">
+              <h2>Planlanan ve geçmiş randevular</h2>
+              <div id="appointment-list" class="appointment-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="documents-panel" class="admin-panel">
+          <div class="dashboard-heading document-heading"><div><span class="section-kicker">İŞLEM ÖN HAZIRLIĞI</span><h2>Belge taslağı ve kontrol listesi</h2><p>İşlem bilgilerini düzenleyin; eksik alanları kontrol edip bir ön taslak oluşturun.</p></div></div>
+          <div class="contract-notice"><span>ⓘ</span><p><strong>Önemli:</strong> Oluşan metin yalnızca taslaktır; hukuki danışmanlık veya resmî doğrulama değildir. Kimlik, imza, tapu, takyidat ve imar bilgileri sistem tarafından doğrulanmaz. İmzalamadan önce yetkili bir uzmana inceletin.</p></div>
+          <div class="contract-layout">
+            <form id="contract-form" class="form-card">
+              <div class="form-card-heading"><span class="form-step">01</span><div><h2>İşlem bilgileri</h2><p>Taslak için temel bilgileri girin.</p></div></div>
+              <label>İşlem türü<select name="transaction"><option>Satış</option><option>Kiralama</option><option>Portföy yetkilendirme</option></select></label>
+              <label>Taşınmaz<select id="contract-property" name="property" required></select></label>
+              <div class="field-row"><label>Mal sahibi / kiraya veren<input name="owner" required placeholder="Ad soyad"></label><label>Alıcı / kiracı<input name="client" required placeholder="Ad soyad"></label></div>
+              <div class="field-row"><label>İşlem bedeli (TL)<input name="price" inputmode="numeric" placeholder="Örn. 5.000.000"></label><label>Tarih<input name="date" type="date"></label></div>
+              <label>Ek notlar<textarea name="notes" rows="3" placeholder="Tarafların gözden geçireceği özel bilgiler"></textarea></label>
+              <button class="primary-button full-button" type="submit"><span>✳</span> Taslak ve kontrol listesi oluştur</button>
+            </form>
+            <section id="contract-result" class="contract-result"><div class="result-empty"><div class="empty-icon">✳</div><h3>Kontrol burada başlayacak</h3><p>İşlem bilgilerini doldurduğunuzda taslak ve kontrol listesi burada görünür.</p></div></section>
+          </div>
+        </section>
+
+        <section id="advisor-panel" class="admin-panel">
+          <div class="dashboard-heading document-heading"><div><span class="section-kicker">MÜŞTERİYE AÇIK PROFİL</span><h2>Danışman bilgileri</h2><p>Bu bilgiler müşteri sitesindeki danışmanlık alanında gösterilir.</p></div></div>
+          <form id="advisor-profile-form" class="form-card advisor-profile-form">
+            <label>Danışman veya ofis adı<input name="name" required maxlength="100" placeholder="Örn. Yuva Gayrimenkul Danışmanlığı"></label>
+            <label>İletişim telefonu<input name="phone" type="tel" maxlength="30" placeholder="05xx xxx xx xx"></label>
+            <label>Müşteriye kısa açıklama<textarea name="intro" maxlength="240" rows="3" placeholder="Hizmetinizi ve müşteriye nasıl yardımcı olduğunuzu kısaca anlatın."></textarea></label>
+            <fieldset class="schedule-settings">
+              <legend>Randevu çalışma saatleri</legend>
+              <p>Müşteri tarafında yalnızca seçtiğiniz gün ve saatlerdeki boş randevu aralıkları görünür.</p>
+              <div class="schedule-days" aria-label="Çalışma günleri">
+                <label><input type="checkbox" name="scheduleDay" value="1"> Pazartesi</label>
+                <label><input type="checkbox" name="scheduleDay" value="2"> Salı</label>
+                <label><input type="checkbox" name="scheduleDay" value="3"> Çarşamba</label>
+                <label><input type="checkbox" name="scheduleDay" value="4"> Perşembe</label>
+                <label><input type="checkbox" name="scheduleDay" value="5"> Cuma</label>
+                <label><input type="checkbox" name="scheduleDay" value="6"> Cumartesi</label>
+                <label><input type="checkbox" name="scheduleDay" value="0"> Pazar</label>
+              </div>
+              <div class="field-row">
+                <label>Başlangıç saati<input name="scheduleStart" type="time" required></label>
+                <label>Bitiş saati<input name="scheduleEnd" type="time" required></label>
+                <label>Randevu aralığı<select name="scheduleInterval"><option value="15">15 dakika</option><option value="30">30 dakika</option><option value="60">60 dakika</option></select></label>
+              </div>
+            </fieldset>
+            <button class="primary-button full-button" type="submit">Profili kaydet</button>
+          </form>
+        </section>
+
+        <section id="backup-panel" class="admin-panel">
+          <div class="dashboard-heading document-heading"><div><span class="section-kicker">VERİLERİNİZ</span><h2>Yedekleme ve geri yükleme</h2><p>Portföyü, müşteri kayıtlarını, randevuları ve ayarları JSON dosyası olarak saklayın.</p></div></div>
+          <div class="backup-card">
+            <p>Yedek dosyası parola ve oturum bilgilerinizi içermez. Geri yükleme bu tarayıcıdaki Yuva kayıtlarının üzerine yazar.</p>
+            <div class="backup-actions">
+              <button id="export-backup" type="button" class="primary-button">Yedeği indir</button>
+              <button id="select-backup" type="button" class="secondary-button">Yedekten geri yükle</button>
+              <input id="backup-file" class="hidden" type="file" accept="application/json,.json">
+            </div>
+            <small>Bu yedek, verileri başka cihazla eşitlemez. Paylaşmadan önce kişisel müşteri bilgilerini göz önünde bulundurun.</small>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="listing-dialog" class="app-dialog">
+    <form id="listing-form" class="dialog-form">
+      <div class="dialog-header"><div><span class="section-kicker">ÖZEL PORTFÖY YÖNETİMİ</span><h2 id="listing-dialog-title">Yeni ilan</h2></div><button type="button" class="icon-button" data-close-dialog aria-label="Kapat">×</button></div>
+      <input type="hidden" name="id">
+      <label>İlan başlığı<input name="title" required maxlength="100" placeholder="Örn. Bahçeli, ferah aile evi"></label>
+      <div class="field-row"><label>Mülk türü<select name="kind"><option>Daire</option><option>Villa</option><option>Arsa</option><option>Ticari</option></select></label><label>İlan türü<select name="type"><option>Satılık</option><option>Kiralık</option></select></label></div>
+      <div class="field-row"><label>Şehir<input name="city" required placeholder="İzmir"></label><label>İlçe<input name="district" placeholder="Urla"></label></div>
+      <div class="field-row"><label>Fiyat (TL)<input name="price" required inputmode="numeric" placeholder="7500000"></label><label>Alan (m²)<input name="area" inputmode="numeric" placeholder="145"></label></div>
+      <div class="field-row"><label>Oda sayısı<input name="rooms" placeholder="3+1"></label><label>Durum<select name="status"><option value="active">Yayında</option><option value="draft">Taslak</option></select></label></div>
+      <label>Kısa açıklama<textarea name="description" rows="3" placeholder="Mülkün öne çıkan özellikleri"></textarea></label>
+      <fieldset class="listing-checks">
+        <legend>Portföy bilgi kontrolü</legend>
+        <p>Bu alanlar danışman notudur; tapu, imar veya yetki bilgileri resmî kaynaktan doğrulanmaz.</p>
+        <div class="field-row">
+          <label>Tapu / takyidat durumu<select name="deedStatus"><option value="">Kontrol edilmedi</option><option value="checked">Danışman kontrol etti</option><option value="issue">İnceleme gerekli</option></select></label>
+          <label>İmar durumu<select name="zoningStatus"><option value="">Kontrol edilmedi</option><option value="checked">Danışman kontrol etti</option><option value="issue">İnceleme gerekli</option><option value="not-applicable">Uygulanamaz</option></select></label>
+        </div>
+        <div class="field-row">
+          <label>Yetki belgesi bitiş tarihi<input name="authorizationExpiry" type="date"></label>
+          <label>Aylık aidat (TL)<input name="monthlyDues" type="number" min="0" step="1" placeholder="Yoksa 0 yazın"></label>
+        </div>
+        <label>Bu bilgilerin son kontrol tarihi<input name="verifiedAt" type="date"></label>
+      </fieldset>
+      <label>Görsel URL'si (isteğe bağlı)<input name="image" type="url" placeholder="https://..."></label>
+      <label>360° / 3D sanal tur bağlantısı (isteğe bağlı)<input name="tour" type="url" placeholder="https://..."><small class="form-help">Gerçek 360° tur bağlantısı ekleyin; sıradan fotoğraf tek başına gezinti oluşturmaz.</small></label>
+      <div class="dialog-actions"><button type="button" class="secondary-button" data-close-dialog>Vazgeç</button><button type="submit" class="primary-button">Kaydet</button></div>
+    </form>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10231d">
+  <meta name="description" content="Satılık ve kiralık emlak portföyünü keşfedin; gayrimenkul danışmanınızdan size uygun bir randevu saati seçin.">
+  <title>Yuva | Gayrimenkul Danışmanlığı</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.7/build/pannellum.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="role-experience.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Yuva ana sayfa"><span class="brand-mark">y</span><span>yuva<span class="brand-dot">.</span></span></a>
+    <nav class="main-nav" aria-label="Ana menü">
+      <a class="nav-link active" href="#kesfet">İlanlar</a>
+    </nav>
+    <div class="header-actions">
+      <button class="primary-button public-contact-trigger" type="button" data-book-appointment>Danışmandan randevu alın <span>↗</span></button>
+    </div>
+   </header>
+
+  <main>
+    <section id="discover-view" class="view active" aria-labelledby="main-heading">
+      <div class="hero">
+        <div class="hero-content">
+          <div class="eyebrow"><span></span> <strong id="advisor-name-hero" class="public-advisor-name">YUVA GAYRİMENKUL DANIŞMANLIĞI</strong></div>
+          <h1 id="main-heading">Aradığınız yeri<br><em>birlikte</em> bulalım.</h1>
+          <p id="advisor-intro-public">Satılık ve kiralık portföyü inceleyin. İhtiyacınızı danışmanınıza iletin, size uygun seçenekleri birlikte değerlendirin.</p>
+          <button id="demo-tour-button" class="hero-demo-button" type="button"><span>◉</span> 360° tur örneğini incele <span class="demo-arrow">↗</span></button>
+          <div class="hero-stats"><div><strong id="hero-listing-count">0</strong><span>portföydeki ilan</span></div></div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="sun"></div><div class="art-hill hill-back"></div><div class="art-hill hill-front"></div>
+          <div class="art-house"><div class="house-roof"></div><div class="house-body"><i></i><i></i><b></b></div></div>
+          <div class="art-label"><span class="pulse"></span> Hayalinizdeki yer, bir adım uzakta</div>
+        </div>
+      </div>
+      
+      <div id="kesfet" class="content-wrap">
+        <section class="search-panel">
+          <div class="search-intro">
+            <div><span class="ai-spark">✳</span><span class="section-kicker">EMLAK ASİSTANI</span></div>
+            <h2>Nasıl bir mülk arıyorsunuz?</h2>
+            <p>Aradığınız yeri anlatın; portföyümüzdeki ilanlar arasından size uygun olanları bulalım.</p>
+          </div>
+          <form id="ai-search-form" class="ai-search">
+            <label class="sr-only" for="ai-query">Aradığınız emlağı tarif edin</label>
+            <input id="ai-query" type="search" placeholder="Örn. İzmir'de bahçeli, 3 odalı bir ev..." autocomplete="off">
+            <button type="submit"><span>✳</span> İlanları eşleştir</button>
+          </form>
+          <div class="quick-prompts">
+            <button type="button" data-query="İstanbul'da satılık daire">İstanbul'da daire</button>
+            <button type="button" data-query="Bahçeli ev">Bahçeli ev</button>
+            <button type="button" data-query="Arsa">Arsa</button>
+            <button type="button" data-query="Kiralık">Kiralık</button>
+          </div>
+          <div class="saved-search-toolbar">
+            <button id="save-search-button" class="small-action" type="button">Bu aramayı kaydet</button>
+            <span id="saved-search-feedback" aria-live="polite"></span>
+          </div>
+          <div id="saved-searches" class="saved-searches hidden" aria-label="Kaydedilen aramalar"></div>
+          <div id="ai-response" class="ai-response" aria-live="polite"></div>
+        </section>
+
+        <div class="section-heading">
+          <div><span class="section-kicker">GAYRİMENKUL PORTFÖYÜ</span><h2>Satılık ve kiralık ilanlar</h2></div>
+          <div class="listing-controls">
+            <label class="filter-select"><span class="sr-only">İlan tipi</span><select id="type-filter"><option value="all">Tüm ilanlar</option><option value="Satılık">Satılık</option><option value="Kiralık">Kiralık</option></select></label>
+            <label class="filter-select"><span class="sr-only">Mülk türü</span><select id="kind-filter"><option value="all">Tüm mülkler</option><option value="Daire">Daire</option><option value="Villa">Villa</option><option value="Arsa">Arsa</option></select></label>
+          </div>
+        </div>
+        <div id="public-listings" class="listing-grid"></div>
+        <div id="empty-listings" class="empty-state hidden"><div class="empty-icon">⌂</div><h3>Aramanıza uygun ilan bulamadım</h3><p>Filtreleri değiştirebilir veya başka bir tarif deneyebilirsiniz.</p></div>
+        <section id="sample-listings-note" class="trust-strip hidden"><span>ⓘ</span><p>Bu sayfada örnek ilanlar bulunuyor. Gerçek portföy bilgileri ve mülkün güncel durumu için danışmanınızdan teyit alın.</p></section>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer public-footer"><a class="brand footer-brand" href="#" aria-label="Yuva ana sayfa"><span class="brand-mark">y</span><span>yuva<span class="brand-dot">.</span></span></a><div class="public-footer-copy"><strong id="advisor-name-public">Yuva Gayrimenkul Danışmanlığı</strong><span>Gayrimenkul kararlarınızda profesyonel rehberlik.</span></div><button class="secondary-button" type="button" data-book-appointment>Uygun bir saat seçin</button><span class="copyright">© 2026 Yuva</span></footer>
+
+  <dialog id="lead-dialog" class="app-dialog lead-dialog">
+    <form id="lead-form" class="dialog-form">
+      <div class="dialog-header"><div><span class="section-kicker public-advisor-name">YUVA GAYRİMENKUL DANIŞMANLIĞI</span><h2 id="lead-dialog-title">İlan hakkında bilgi alın</h2></div><button type="button" class="icon-button" data-close-dialog aria-label="Kapat">×</button></div>
+      <p class="lead-dialog-intro" id="lead-dialog-intro">İletişim bilgilerinizi bırakın; ilanla ilgili talebinizi danışmanımıza iletelim.</p>
+      <input type="hidden" name="listingId">
+      <label>Adınız<input name="name" required maxlength="100" autocomplete="name" placeholder="Ad soyad"></label>
+      <label>Telefon numaranız<input name="phone" required type="tel" maxlength="30" autocomplete="tel" placeholder="05xx xxx xx xx"></label>
+      <label>Notunuz <span class="optional-label">(isteğe bağlı)</span><textarea name="notes" maxlength="1000" rows="3" placeholder="İlanla ilgili merak ettiğiniz konu"></textarea></label>
+      <details class="lead-preferences">
+        <summary>Aradığınız mülk özellikleri (isteğe bağlı)</summary>
+        <div class="lead-preference-fields">
+          <label>Şehir / ilçe<input name="desiredLocation" maxlength="80" placeholder="Örn. İzmir, Urla"></label>
+          <div class="field-row">
+            <label>İşlem türü<select name="desiredType"><option value="">Fark etmez</option><option>Satılık</option><option>Kiralık</option></select></label>
+            <label>Mülk türü<select name="desiredKind"><option value="">Fark etmez</option><option>Daire</option><option>Villa</option><option>Arsa</option><option>Ticari</option></select></label>
+          </div>
+          <div class="field-row">
+            <label>En fazla bütçe (TL)<input name="maxBudget" inputmode="numeric" placeholder="Örn. 7500000"></label>
+            <label>En az alan (m²)<input name="minArea" inputmode="numeric" placeholder="Örn. 100"></label>
+          </div>
+        </div>
+      </details>
+      <label class="consent-check"><input name="consent" type="checkbox" required><span>Talebimin yanıtlanması amacıyla iletişim bilgilerimin kullanılmasını kabul ediyorum.</span></label>
+      <button class="primary-button full-button" type="submit">İletişim talebi gönder</button>
+      <p class="lead-storage-note">Önizleme sürümünde talep bu cihazda kaydedilir; danışmana internet üzerinden gönderilmez.</p>
+    </form>
+  </dialog>
+
+  <dialog id="appointment-dialog" class="app-dialog lead-dialog">
+    <form id="public-appointment-form" class="dialog-form">
+      <div class="dialog-header"><div><span class="section-kicker public-advisor-name">YUVA GAYRİMENKUL DANIŞMANLIĞI</span><h2>Danışmandan randevu alın</h2></div><button type="button" class="icon-button" data-close-dialog aria-label="Kapat">×</button></div>
+      <p class="lead-dialog-intro">Size uygun aktif bir saat seçin. Randevu talebiniz danışman panelindeki ajandaya iletilir.</p>
+      <label>Adınız<input name="name" required maxlength="100" autocomplete="name" placeholder="Ad soyad"></label>
+      <label>Telefon numaranız<input name="phone" required type="tel" maxlength="30" autocomplete="tel" placeholder="05xx xxx xx xx"></label>
+      <label>Görüşmek istediğiniz ilan <span class="optional-label">(isteğe bağlı)</span><select id="appointment-listing" name="listingId"><option value="">Genel görüşme</option></select></label>
+      <div class="field-row">
+        <label>Uygun gün<input id="public-appointment-date" name="date" type="date" required></label>
+        <label>Aktif saat<select id="public-appointment-time" name="time" required disabled><option value="">Önce gün seçin</option></select></label>
+      </div>
+      <label>Görüşme notu <span class="optional-label">(isteğe bağlı)</span><textarea name="notes" maxlength="1000" rows="3" placeholder="Görüşme gündeminizi kısaca paylaşın"></textarea></label>
+      <label class="consent-check"><input name="consent" type="checkbox" required><span>Randevu talebimin yanıtlanması için iletişim bilgilerimin kullanılmasını kabul ediyorum.</span></label>
+      <button class="primary-button full-button" type="submit">Randevu talebi gönder</button>
+      <p class="lead-storage-note">Önizleme sürümünde randevu bu cihazda kaydedilir; internet üzerinden gönderim için sunucu bağlantısı gerekir.</p>
+    </form>
+  </dialog>
+
+  <dialog id="tour-dialog" class="app-dialog tour-dialog">
+    <div class="tour-header"><div><span class="section-kicker">SANAL GEZİNTİ</span><h2 id="tour-title">İlanı keşfedin</h2></div><button class="icon-button" data-close-dialog aria-label="Kapat">×</button></div>
+    <div id="tour-content" class="tour-content"></div>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.7/build/pannellum.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
